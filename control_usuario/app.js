@@ -1,18 +1,13 @@
 const express = require ('express');
 const app = express();
-
 app.use(express.json());
-
 
     const usuarios =[
         { id: 1, nombre: 'Juan', apellido: 'Perez', email:'juanperez@gmail.com' },
         { id: 2, nombre: 'maria', apellido: 'Perez', email:'mariaperez@gmail.com' },
-    ];
-   
+    ];  
 app.get('/usuarios',((req, res)=>{
-res.send({usuarios})
-     
-
+res.send({usuarios})  
 }))
 
 app.get('/usuarios/:id', (req, res) => {
