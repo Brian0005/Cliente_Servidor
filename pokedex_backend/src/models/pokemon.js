@@ -1,4 +1,3 @@
-
 const pokemonQueries = {
     getAll: 'SELECT * FROM pokemons WHERE is_deleted=0',
     getByID: 'SELECT * FROM pokemons WHERE id = ? AND is_deleted=0',

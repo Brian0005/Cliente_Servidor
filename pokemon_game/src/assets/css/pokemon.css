@@ -1,13 +1,11 @@
 .gradient {
-    background-image: radial-gradient(circle, #ffffff, #f0eeff, #dfddff, #cdcdff, #b8beff, 
-    #a2a9f3, #8c94e7, #7680db, #5e61c0, #4742a4, #312489, #19006d);
+    background-image: radial-gradient(circle, #6b86d1, #6d8fd6, #7198da, #76a1de, #7caae2, #7cb1e7, #7cb7eb, #7dbeef, #75c5f4, #6dccf7, #66d2fa, #5fd9fb);
     background-repeat: no-repeat;
     background-position: top center;
-    background-size: cove;
+    background-size: cover;
     height: 100vh;
-
 }
 
 .pokemon-shadow{
-    filter: brightness(0%)
+    filter: brightness(0%);
 }

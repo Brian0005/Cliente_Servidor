@@ -1,37 +1,33 @@
 const express = require('express');
 const { pokemonRouter } = require('./routes/pokemon');
-const { typeRouter } = require('./routes/type');
-const cors = require ('cors');
-const { pokemonsTypesRouter } = require('./routes/pokemons_types');
+const { movementRouter } = require('./routes/movements'); // Asegúrate de usar el nombre correcto del router
+const { pokemonsMovementsRouter } = require('./routes/pokemons_movements'); // Importar el nuevo router
+const cors = require('cors');
 
 // Crear clase
 class Server {
-    constructor() {
+    constructor() { // Características básicas de la clase
         this.app = express();
         this.port = 3000;
-
         this.seeders();
         this.middlewares();
         this.routes();
     }
-
-   
+        
     middlewares() {
-        this.app.use(express.json()); // Middleware para parsear los cuerpos de las solicitudes JSON
-        this.app.use(cors)
+        this.app.use(express.json());
+        this.app.use(cors());
     }
 
-
     routes() {
-        this.app.use('/pokemon', pokemonRouter);         // Rutas de Pokémon
-        this.app.use('/type', typeRouter);               // Rutas de Tipos
-        this.app.use('/pokemons_types', pokemonsTypesRouter); // Rutas de Pokémon-Tipos
+        this.app.use('/pokemon', pokemonRouter); // Rutas para Pokémon
+        this.app.use('/movements', movementRouter); // Rutas para Movements
+        this.app.use('/pokemons_movements', pokemonsMovementsRouter); // Rutas para Pokémons-Movements
     }
 
     seeders() {
-        require('./seeds/pokemon').pokemonsSeeder(); // Seeder para Pokémon
-        require('./seeds/type').typesSeeder();       // Seeder para Tipos
-        require('./seeds/pokemons_types').pokemonsTypesSeeder(); // Seeder para Pokémon-Tipos
+        require('./seeds/pokemon').pokemonsSeeder(); // Ejecutar seeders de Pokémon
+        // Puedes agregar un seeder para movimientos si lo necesitas
     }
 
     start() {

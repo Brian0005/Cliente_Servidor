@@ -9,10 +9,10 @@ const getAll = async (req=request,res=response) => {
     const pokemons = await conn.query(pokemonQueries.getAll)
     res.send(pokemons)
 
-    } catch(err){
-        res.status(500).send(err)
+    } catch(error){
+        res.status(500).send(error)
     } finally{
-      if(conn) conn.end()
+        if(conn) conn.end()
     }
 }
 
@@ -36,10 +36,10 @@ const getByID = async (req= request, res=response)=>{
 
         res.send(pokemon)
     
-        } catch(err){
-            res.status(500).send(err)
+        } catch(error){
+            res.status(500).send(error)
         } finally{
-          if(conn) conn.end()
+            if(conn) conn.end()
         }
 }
 
@@ -72,7 +72,7 @@ const{pokemon}=req.body;
         } catch(error){
             res.status(500).send(error)
         } finally{
-          if(conn) conn.end()
+            if(conn) conn.end()
         }
 
 }
@@ -111,8 +111,9 @@ const updatePokemon = async (req=request, res=response) =>{
         } catch(error){
             res.status(500).send(error)
         } finally{
-          if(conn) conn.end()
+            if(conn) conn.end()
         }
+
 
 }
 
@@ -144,26 +145,24 @@ const deletePokemon = async (req=request, res=response) =>{
         } catch(error){
             res.status(500).send(error)
         } finally{
-          if(conn) conn.end()
+            if(conn) conn.end()
         }
 }
 
-    const get3RandomPokemons = async (req, res) => {
-        let conn;
-        try{
-            conn = await pool.getConnection();
-            const pokemons = await conn.query('SELECT * FROM pokemons ORDER BY RAND() LIMIT 3');
-            res.status(200).send(pokemons);
-        }
-        catch(error){
-            res.status(500).send(error);
-            return;
-        }
-        finally{
-            if (conn) conn.end();
-        }
+const get3randomPokemons = async (req, res) =>{
+    let conn
 
+    try{
+        conn=await pool.getConnection()
+        const pokemons = await conn.query('SELECT * FROM pokemons ORDER BY RAND() LIMIT 3')
+        res.status(200).send(pokemons)
+    }catch(error){
+        res.status(500).send(error)
+        return
+    }finally{
+        if(conn) conn.end()
     }
+}
 
 module.exports = {
     getAll,
@@ -171,5 +170,5 @@ module.exports = {
     addPokemon,
     updatePokemon,
     deletePokemon,
-    get3RandomPokemons
+    get3randomPokemons,
 }

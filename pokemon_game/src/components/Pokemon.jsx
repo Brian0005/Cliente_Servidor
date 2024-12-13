@@ -1,18 +1,22 @@
-import "../assets/css/pokemon.css"
 import PropTypes from "prop-types"
 
-const Pokemon = (props) => {
+const showPokemon = "my-5"
+const hidePokemon = "my-5 pokemon-shadow"
+
+const Pokemon = (props) =>{
     
-    return(
+    return (
         <div>
-        <img src={props.winner} alt="Pokemon" width="400" className="my-5 pokemon-shadow" />
+        <img src={props.winner} alt ="Pokémon" width="280" className={props.youWon ? showPokemon : hidePokemon}/> 
         </div>
+        
     
     )
 }
 
-Pokemon.propTypes = {
-    winner: PropTypes.string.isRequired
+Pokemon.propsTypes ={
+    winner: PropTypes.string,
+    youWon: PropTypes.bool
 }
 
 export default Pokemon

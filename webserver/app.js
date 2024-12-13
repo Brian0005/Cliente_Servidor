@@ -5,7 +5,6 @@ const server = http.createServer((request, response)=>{
     response.writeHead(500);
     response.write ('HOLA MUNDO');
     response.end();
-
 });
 
 server.listen(8080);
